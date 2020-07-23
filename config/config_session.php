@@ -1,7 +1,7 @@
 ﻿<?php
 	require_once("config/session.php");
-	require_once("class/class.user.php");
 	
+	// VARIAVEL DE SESSÃO DO USUARIO
 	$auth_user = new USER();
 	
 	$user_id = $_SESSION['user_session'];
@@ -11,8 +11,7 @@
 	
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 	
-	require_once("config/session.php");
-	require_once("class/class.account.php");
+	// VARIAVEL DE SESSÃO DA CONTA
 	
 	$auth_account = new ACCOUNT();
 	
@@ -23,7 +22,16 @@
 	
 	$accountRow=$stmt->fetch(PDO::FETCH_ASSOC);
 	$contapd = $accountRow['idconta'];
+	$name = $accountRow['proprietario'];
+	/*
+	$auth_dados = new MOVS();
+	//$account_idlivro = $contapd;
 	
-	require_once("class/class.lancamentos.php");
-	$login = new 	MOVS();
+	$stmt = $auth_dados->Lquery("SELECT MAX(idlivro) as MaxL FROM lc_movimento WHERE idconta=:idconta");
+	$stmt->execute(array(":idconta"=>$contapd));
+	
+	$livroRow=$stmt->fetch(PDO::FETCH_ASSOC);
+	
+	$livro = $livroRow['MaxL'];
+	*/
 ?>

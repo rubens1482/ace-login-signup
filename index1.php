@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <?php
-require_once("config/config_account.php");
+session_start();
+require_once("class.user.php");
+$login = new USER();
+
+if($login->is_loggedin()!="")
+{
+	$login->redirect('home.php');
+}
+
+if(isset($_POST['btn-login']))
+{
+	$uname = strip_tags($_POST['txt_uname_email']);
+	$umail = strip_tags($_POST['txt_uname_email']);
+	$upass = strip_tags($_POST['txt_password']);
+		
+	if($login->doLogin($uname,$umail,$upass))
+	{
+		$status = "Login Success !";
+		$login->redirect('home.php');
+		
+	}
+	else
+	{
+		$status = "Dados Incorretos !";
+	}	
+}
 ?>
-<html lang="pt_Br">
+<html lang="en">
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Login Page - Contas </title>
+		<title>Login Page - Ace Admin</title>
 
 		<meta name="description" content="User login page" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -61,7 +86,7 @@ require_once("config/config_account.php");
 										<div class="widget-main">
 											<h4 class="header blue lighter bigger">
 												<i class="ace-icon fa fa-coffee green"></i>
-												Please Enter Your Account
+												Please Enter Your Login
 											</h4>
 
 											<div class="space-6"></div>
@@ -70,14 +95,14 @@ require_once("config/config_account.php");
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" name="txt_account_email" placeholder="Please enter your account" />
+															<input type="text" class="form-control" name="txt_uname_email" placeholder="Please enter username" />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" name="txt_password" placeholder="enter your account password" />
+															<input type="password" class="form-control" name="txt_password" placeholder="enter your password" />
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
 													</label>
@@ -119,7 +144,7 @@ require_once("config/config_account.php");
 
 											<div>
 												<a href="#" data-target="#signup-box" class="user-signup-link">
-													register new Account
+													I want to register
 													<i class="ace-icon fa fa-arrow-right"></i>
 												</a>
 											</div>
@@ -238,7 +263,7 @@ require_once("config/config_account.php");
 										<div class="toolbar center">
 											<a href="#" data-target="#login-box" class="back-to-login-link">
 												<i class="ace-icon fa fa-arrow-left"></i>
-												Back to login account
+												Back to login
 											</a>
 										</div>
 									</div><!-- /.widget-body -->

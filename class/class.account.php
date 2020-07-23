@@ -1,24 +1,24 @@
 <?php
 
-require_once('dbconfig.php');
+require_once('config/dbconfig.php');
 
 class ACCOUNT
 {	
 	private $conn;
-//	FUNÇÃO DE CONEXÃO
+//	FUNï¿½ï¿½O DE CONEXï¿½O
 	public function __construct()
 	{
 		$database = new Database();
 		$dbs = $database->dbConnection();
 		$this->conn = $dbs;
     }
-//	FUNÇÃO DE CONSULTA	
+//	FUNï¿½ï¿½O DE CONSULTA	
 	public function SqlQuery($sqli)
 	{
 		$stmt = $this->conn->prepare($sqli);
 		return $stmt;
 	}
-//	FUNÇÃO DE REGISTRO	
+//	FUNï¿½ï¿½O DE REGISTRO	
 	public function register($account,$prop,$pass_c)
 	{
 		try
@@ -42,7 +42,7 @@ class ACCOUNT
 		}				
 	}
 	
-//	FUNÇÃO DE SELEÇÃO	
+//	FUNï¿½ï¿½O DE SELEï¿½ï¿½O	
 	public function doLogin_c($account,$prop,$pass_c)
 	{
 		try
@@ -68,7 +68,7 @@ class ACCOUNT
 			echo $e->getMessage();
 		}
 	}
-//	FUNÇÃO DE VERIFICAÇÃO LOGADO	
+//	FUNï¿½ï¿½O DE VERIFICAï¿½ï¿½O LOGADO	
 	public function is_loggedin_c()
 	{
 		if(isset($_SESSION['account_session']))
@@ -76,15 +76,14 @@ class ACCOUNT
 			return true;
 		}
 	}
-//	FUNÇÃO DE REDIRECIONAMENTO	
+//	FUNï¿½ï¿½O DE REDIRECIONAMENTO	
 	public function redirect($url)
 	{
 		header("Location: $url");
 	}
-//	FUNÇÃO DE LOGOUT	
+//	FUNï¿½ï¿½O DE LOGOUT	
 	public function doLogout_c()
 	{
-		session_destroy();
 		unset($_SESSION['account_session']);
 		return true;
 	}
