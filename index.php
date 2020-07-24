@@ -1,15 +1,9 @@
 <!DOCTYPE html>
 <?php
+error_reporting(E_ERROR | E_WARNING);
 	include "config/config_session.php";
-
-	/*
-	
-	require_once("config/session.php");
-	require_once("class/class.user.php");
-	include "config/config_session.php";
-	include "parameters.php";
-*/
-	?>
+	include "parameters.php";	
+?>
 <html lang="pt_BR">
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
