@@ -47,11 +47,16 @@ error_reporting(E_ERROR | E_WARNING);
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
+		<link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.min.css">
+		<link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.css">
+		<script src="jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+		<script src="jquery-ui-1.12.1/jquery-ui.min.js"></script>
+		<script src="jquery-ui-1.12.1/jquery-ui.js"></script>
 	</head>
 
 	<body class="no-skin">
+	
 		<div id="navbar" class="navbar navbar-default          ace-save-state">
-		
 			<div class="navbar-container ace-save-state" id="navbar-container">
 				<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
 					<span class="sr-only">Toggle sidebar</span>

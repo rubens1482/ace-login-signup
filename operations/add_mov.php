@@ -12,14 +12,6 @@ function selected( $value, $selected ){
     return $value==$selected ? ' selected="selected"' : '';
 }
 ?>
-<link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.min.css">
-<script src="jquery-ui-1.12.1/external/jquery/jquery.js"></script>
-<script src="jquery-ui-1.12.1/jquery-ui.min.js"></script>
-<script src="jQuery-Mask-Plugin-v1.7.7-0/jquery.mask.min.js"></script>
-<script src="vendor/jquery-1.11.3.min.js"></script>
-<script src="vendor/main.js"></script>
-<script src="vendor/plugins.js"></script>
-
 <script language="Javascript">
 function BuscaSelect(campo) {
 		campo=campo.value;
@@ -191,7 +183,7 @@ function BuscaSelect(campo) {
 									<label class="control-label" style="position:relative; top:7px;">Livro:</label>
 								</div>
 								<div class="col-lg-3">	
-									<input type="number" class="form-control" name="idlivro"  value="<?php echo $livro ?>" id="livro" size="1">
+									<input type="number" class="form-control" name="idlivro"  value="<?php echo $idlivro ?>" id="idlivro" size="1">
 								</div>
 							</div>
 					</div>
