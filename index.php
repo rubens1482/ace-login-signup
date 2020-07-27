@@ -587,20 +587,20 @@ error_reporting(E_ERROR | E_WARNING);
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
+						<!-- AQUI NASCE A INCLUSÃO DA TABELA DE BALANCO -->
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
 								<?php 
 									include "balanco.php" 
 								?>
-								
+								</br>
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 							
 							<div class="container-fluid" >
 							  <?php //<!-- COMANDO PHP PARA MOSTRAR A TABELA DE DADOS  -->
-								  include "table_home.php";
-								  
+								  include "table_home.php";  
 							  ?>
 								
 									<table class="table table-responsive table-bordered table-striped table-condensed table-hover" >
