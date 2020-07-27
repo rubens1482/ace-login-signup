@@ -38,23 +38,9 @@ error_reporting(E_ERROR | E_WARNING);
 		<!-- inline styles related to this page -->
 
 		<!-- ace settings handler -->
+		
 		<script src="assets/js/ace-extra.min.js"></script>
-		<script >
-			$( function() {
-				$( "#datamov, #datamov, #datapicker, #data_i, #data_f" ).datepicker({
-					altField: "#actualDate",
-					dateFormat: "dd-mm-yy",
-					altFormat: "dd-mm-YY",
-					showWeek: true,	
-					changeMonth: true,
-					changeYear: true
-				});
-				$( ".selector" ).datepicker({
-				altFormat: "dd-mm-yy",
-				altField: "#actualDate"
-				});
-			} );
-		</script>
+		
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 		<!--[if lte IE 8]>

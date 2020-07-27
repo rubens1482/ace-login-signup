@@ -16,6 +16,9 @@ function selected( $value, $selected ){
 <script src="jquery-ui-1.12.1/external/jquery/jquery.js"></script>
 <script src="jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script src="jQuery-Mask-Plugin-v1.7.7-0/jquery.mask.min.js"></script>
+<script src="vendor/jquery-1.11.3.min.js"></script>
+<script src="vendor/main.js"></script>
+<script src="vendor/plugins.js"></script>
 
 <script language="Javascript">
 function BuscaSelect(campo) {
@@ -34,7 +37,7 @@ function BuscaSelect(campo) {
 }
 </SCRIPT>
 
-<script>
+<script> language="javascript">
   $( function() {
 	  $( "#datamov, #datapicker, #data_i, #data_f" ).datepicker({
 		altField: "#actualDate",
@@ -110,7 +113,7 @@ function BuscaSelect(campo) {
 								</div>
 								<div class="col-lg-10">
 									<input type="text" class="form-control" name="folha" id="folha">
-									<input type="text" class="form-control" name="url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
+									<input type="hidden" class="form-control" name="url" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
 								</div>
 							</div>
 							<div style="height:10px;"></div>
