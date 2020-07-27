@@ -1,33 +1,10 @@
-﻿<?php 
-	include "class/class.lancamentos.php";
-	$mostrar = new MOVS;
-	$dados = $mostrar->bal_pormes($contapd,$mes_hoje, $ano_hoje);
-	
-	foreach($dados as $linha){
-	$saldo_aa = $linha['saldo_ano_ant'];
-	$saldo_ant = $linha['saldo_anterior_mes'];
-	$entradas_m = $linha['credito_mes'];
-	$saidas_m = $linha['debito_mes'];
-	$resultado_mes = $linha['saldo_atual_mes'];
-	$ent_acab = $linha['credito_acum_ano'];
-	$sai_acab = $linha['debito_acum_ano'];
-	$saldo_acab = $linha['saldo_atual_mes'];
-	$saldo_acab = $saldo_aa + $ent_acab - $sai_acab;
-	} 
-	?>
-	
+﻿
+<div class="row">
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xd-12">	
 		<div class="panel panel-primary" >
 			<!--  CABEÇALHO DOS BALANCOS -->
 			<div class="panel-heading"  >
-				<div class="row">
-					<div class="col-lg-6 col-md-6 col-sm-6 col-xd-6" style="text-align: left;">
-						<strong> BALANCOS DE MOVIMENTO - LIVRO Nº <?php echo $livro ?></strong>
-					</div>
-					<div class="col-lg-6 col-md-6 col-sm-6 col-xd-6" style="text-align: right;">
-						<strong> DEMOSTRATIVO MENSAL </strong>
-					</div>
-				</div>	
+				BALANCOS DE MOVIMENTO
 			</div>
 			<!--  INICIO DO CORPO DO BALANCO -->
 			<div class="panel-body" >
@@ -37,7 +14,7 @@
 						<!--  SALDO ANTERIOR  BALANÇO MENSAL -->
 						<div class="row" >
 							<div class="col-sm-12" style="text-align: left; border-bottom: 1px dashed #f00;" >
-								<strong><span style="font-size:14px; color:<?php echo "#006400" ?>">BALANCO MENSAL </span></strong>
+								<strong><span style="font-size:14px; color:<?php echo "#006400" ?>">BALANCO MENSAL</span></strong>
 							</div>
 						</div>
 						<div class="row" >
@@ -65,6 +42,7 @@
 							<div class="col-sm-6" style=" text-align: right; border-bottom: 1px dashed #f00;">
 								<strong><span style="font-size:14px; color:<?php echo "#C00" ?>"><?php print formata_dinheiro($saidas_m) ?></span></strong>
 							</div>
+							
 						</div>
 						<!--  SALDO ATUAL BALANÇO MENSAL  -->
 						
@@ -125,22 +103,24 @@
 					</div>
 					<!--  FIM DO BALANCO ANUAL -->
 				</div>
-				<br>
 				<div class="row">
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xd-12" style="text-align: left; border-bottom: 1px dashed #f00;">
-						<form class="form-inline" style="text-align: center;">
+					<hr style="border-top: 1px dashed #8c8b8b;">
+				</div>
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xd-12">
+						<form class="form-inline">
 							<label for="ano">
 							Ano:
 							</label>
-							<select class="form-control" id="sel1" onchange="location.replace('?mes=<?php echo $mes_hoje?>&ano='+this.value)">
-								<?php
-									for ($i=2004;$i<=2050;$i++){
-									?>
-									<option value="<?php echo $i?>" <?php if ($i==$ano_hoje) echo "selected=selected"?> ><?php echo $i?></option>
-								<?php }?>
-							</select>
+						<select class="form-control" id="sel1" onchange="location.replace('?mes=<?php echo $mes_hoje?>&ano='+this.value)">
+							<?php
+								for ($i=2004;$i<=2050;$i++){
+								?>
+								<option value="<?php echo $i?>" <?php if ($i==$ano_hoje) echo "selected=selected"?> ><?php echo $i?></option>
+							<?php }?>
+						</select>
 							<label for="mes">
-							Mes:
+								Mes:
 							</label>
 							<div class="btn-group">
 								<?php
@@ -163,14 +143,15 @@
 							<a href="#addmov" class="btn btn-sm btn-success " name="add_mov" data-toggle="modal" style="border: solid 1px; border-radius: 1px; box-shadow: 1px 1px 1px 1px black; border-radius:3px 3px 3px 3px;">
 								<i class="glyphicon glyphicon-plus"></i> Novo
 							</a>
-							<a href="list_cat.php" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span>Categorias</a>
+							<a href="list_cat.php" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span>Decline</a>
 						</form>	
 					</div>
 				</div>
+				<?php include "add_mov.php" ?>
 			</div>
-			<div class="panel-footer">
-				BALANÇO 
-			</div>
+			<!--  INICIO DO RODAPÉ DO BALANCO -->
+			
+			<!--  FIM DO RODAPÉ DO BALANCO -->
 		</div>	
 	</div>
-		
+<div>

@@ -570,20 +570,7 @@ error_reporting(E_ERROR | E_WARNING);
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
-								<div class="alert alert-block alert-success">
-									<!-- ALERT MENSAGEM DE BOAS VINDAS -->
-									<button type="button" class="close" data-dismiss="alert">
-										<i class="ace-icon fa fa-times"></i>
-									</button>
-
-									<i class="ace-icon fa fa-check green"></i>
-
-									Benvindo ao
-									<strong class="green">
-										Livro Caixa
-										<small>(v1.4)</small>
-									</strong> <a href="https://github.com/bopoda/ace">github</a> (with minified ace js/css files).
-								</div>
+								
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
@@ -597,8 +584,9 @@ error_reporting(E_ERROR | E_WARNING);
 								</br>
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
-							
-							<div class="container-fluid" >
+						</div>
+						<div class="row">
+							<div class="col-xs-12" >
 							  <?php //<!-- COMANDO PHP PARA MOSTRAR A TABELA DE DADOS  -->
 								  include "table_home.php";  
 							  ?>
