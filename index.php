@@ -17,8 +17,32 @@ error_reporting(E_ERROR | E_WARNING);
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
 
-		<!-- page specific plugin styles -->
-
+		<!-- DIRETORIO PARA O CALENDARIO JQUERY -->
+		<link rel="stylesheet" href="calendar/jquery-ui.css" />
+		<script src="calendar/jquery-1.8.2.js"></script>
+		<script src="calendar/jquery-ui.js"></script>
+		<script>
+		$(function() {
+			$( "#calendario" ).datepicker({
+			showButtonPanel:true,
+			dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+			dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+			altField: "#actualDate",
+			dateFormat: "dd-mm-yy",
+			altFormat: "dd-mm-YY",
+			showWeek: true,	
+			changeMonth: true,
+			changeYear: true,
+			monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']
+			}
+			);
+			$( ".selector" ).datepicker({
+			altFormat: "dd-mm-yy",
+			altField: "#actualDate"
+			});
+			
+		});
+		</script>
 		<!-- text fonts -->
 		<link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
 
@@ -32,13 +56,13 @@ error_reporting(E_ERROR | E_WARNING);
 		<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
 
 		<!--[if lte IE 9]>
-		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		  
 		<![endif]-->
-
+		<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
 		<!-- inline styles related to this page -->
 
 		<!-- ace settings handler -->
-		
+		<link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.css" />
 		<script src="assets/js/ace-extra.min.js"></script>
 		
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
@@ -47,6 +71,7 @@ error_reporting(E_ERROR | E_WARNING);
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
+		
 		<link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.min.css">
 		<link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.css">
 		<script src="jquery-ui-1.12.1/external/jquery/jquery.js"></script>
@@ -2467,7 +2492,6 @@ error_reporting(E_ERROR | E_WARNING);
 			})
 		</script>
 		<!-- INICIO DO SCRIPT PARA PAGINAÇÃO DA TABELA JQUERY DATATABLES -->
-		
 		
 		<script type="text/javascript">
 			jQuery(function($) {

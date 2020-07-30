@@ -1,4 +1,33 @@
+<!-- DIRETORIO PARA O CALENDARIO JQUERY -->
+<html>
+<link rel="stylesheet" href="calendar/jquery-ui.css" />
+<script src="calendar/jquery-1.8.2.js"></script>
+<script src="calendar/jquery-ui.js"></script>
+<script>
+$(function() {
+	$( "#calendario" ).datepicker({
+	showButtonPanel:true,
+	dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+	dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+	altField: "#actualDate",
+	dateFormat: "dd-mm-yy",
+	altFormat: "dd-mm-YY",
+	showWeek: true,	
+	changeMonth: true,
+	changeYear: true,
+	monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']
+	}
+	);
+	$( ".selector" ).datepicker({
+	altFormat: "dd-mm-yy",
+	altField: "#actualDate"
+	});
+	
+});
+</script>
+</html>
 <?php
+/*
 require_once("config/session.php");
 $account_id = $_SESSION['account_session'];
 	
@@ -7,7 +36,7 @@ $stmt->execute(array(":idconta"=>$account_id));
 
 $accountRow=$stmt->fetch(PDO::FETCH_ASSOC);
 $contapd = $accountRow['idconta'];
-
+*/
 function selected( $value, $selected ){
     return $value==$selected ? ' selected="selected"' : '';
 }
@@ -30,21 +59,7 @@ function BuscaSelect(campo) {
 </SCRIPT>
 
 <script> language="javascript">
-  $( function() {
-	  $( "#datamov, #datapicker, #data_i, #data_f" ).datepicker({
-		altField: "#actualDate",
-		dateFormat: "dd-mm-yy",
-		altFormat: "dd-mm-YY",
-		showWeek: true,	
-		changeMonth: true,
-		changeYear: true,
-		changeDay: true
-	});
-	$( ".selector" ).datepicker({
-	altFormat: "dd-mm-yy",
-	altField: "#actualDate"
-	});
-  } );
+  
   $ (function() {
 	  $("#valor").mask('#,##0.00', {reverse: true});
   }
@@ -155,7 +170,7 @@ function BuscaSelect(campo) {
 									<label class="control-label" style="position:relative; top:7px;">Data:</label>
 								</div>
 								<div class="col-lg-10">
-									<input type="text" class="form-control" name="datamov" id="datamov" value="<?php echo $dia_hoje;?>-<?php echo $mes_hoje;?>-<?php echo $ano_hoje;?>">
+									<input type="text" class="form-control" name="datamov" id="calendario" value="<?php echo $dia_hoje;?>-<?php echo $mes_hoje;?>-<?php echo $ano_hoje;?>">
 								</div>
 							</div>
 							<div style="height:10px;"></div>
