@@ -23,10 +23,10 @@
 	$accountRow=$stmt->fetch(PDO::FETCH_ASSOC);
 	$contapd = $accountRow['idconta'];
 	$name = $accountRow['proprietario'];
-	/*
+	
 	$auth_dados = new MOVS();
 	//$account_idlivro = $contapd;
-	
+	/*
 	$stmt = $auth_dados->Lquery("SELECT MAX(idlivro) as MaxL FROM lc_movimento WHERE idconta=:idconta");
 	$stmt->execute(array(":idconta"=>$contapd));
 	

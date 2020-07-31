@@ -25,4 +25,7 @@
 		// session no set redirects to login page
 		$session->redirect('login_c.php');
 	}
+
+	require_once 'class/class.lancamentos.php';
+	$session = new MOVS();
 ?>
