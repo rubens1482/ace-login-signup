@@ -313,7 +313,11 @@ class MOVS
 	{
 		try
 		{
-			$stmt = $this->conn->prepare("SELECT *, (SELECT SUM(IF(tipo = 1, valor, -1*valor)) FROM lc_movimento AS L2 WHERE IF(L2.datamov < lc_movimento.datamov, L2.datamov < lc_movimento.datamov and L2.idconta = lc_movimento.idconta, L2.datamov = lc_movimento.datamov and L2.idconta = lc_movimento.idconta and L2.id < lc_movimento.id)) AS saldo_anterior,(SELECT IF( lc_movimento.tipo=1, SUM(valor), 0 ) FROM lc_movimento as L2 WHERE L2.id = lc_movimento.id and idconta=1 and L2.datamov = lc_movimento.datamov) as credito, (SELECT IF( lc_movimento.tipo=0, SUM(valor), 0 ) FROM lc_movimento as L2 WHERE L2.datamov = lc_movimento.datamov and idconta=1 and L2.id = lc_movimento.id) as debito, (IF((SELECT Saldo_anterior) IS NULL, 0, (SELECT Saldo_anterior) ) + (SELECT credito) - (SELECT debito)) as saldo_atual FROM lc_movimento WHERE idconta=:contapd and month(datamov)=:mes_hoje and year(datamov)=:ano_hoje ORDER BY datamov ASC;");
+			$stmt = $this->conn->prepare("SELECT *, 
+			(SELECT SUM(IF(tipo = 1, valor, -1*valor)) FROM lc_movimento AS L2 WHERE IF(L2.datamov < lc_movimento.datamov, L2.datamov < lc_movimento.datamov and L2.idconta = lc_movimento.idconta, L2.datamov = lc_movimento.datamov and L2.idconta = lc_movimento.idconta and L2.id < lc_movimento.id)) AS saldo_anterior,
+			(SELECT IF(lc_movimento.tipo=1, SUM(valor), 0 ) FROM lc_movimento as L2 WHERE L2.id = lc_movimento.id and L2.idconta=lc_movimento.idconta and L2.datamov = lc_movimento.datamov) as credito,
+			(SELECT IF(lc_movimento.tipo=0, SUM(-1*(valor)), 0 ) FROM lc_movimento as L2 WHERE L2.datamov = lc_movimento.datamov and L2.idconta=lc_movimento.idconta and L2.id = lc_movimento.id) as debito, 			
+			(IF((SELECT Saldo_anterior) IS NULL, 0, (SELECT Saldo_anterior) ) + (SELECT credito) + (SELECT debito)) as saldo_atual FROM lc_movimento WHERE idconta=:contapd and month(datamov)=:mes_hoje and year(datamov)=:ano_hoje ORDER BY datamov ASC;");
 			$stmt->bindParam(":contapd", $idconta, PDO::PARAM_INT);
 			$stmt->bindParam(":mes_hoje", $mes_hoje, PDO::PARAM_INT);
 			$stmt->bindParam(":ano_hoje", $ano_hoje, PDO::PARAM_INT);

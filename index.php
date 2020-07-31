@@ -581,255 +581,359 @@ error_reporting(E_ERROR | E_WARNING);
 							</h1>
 						</div><!-- /.page-header -->
 
-						<div class="row">
-							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								
-								<!-- PAGE CONTENT ENDS -->
-							</div><!-- /.col -->
-						</div><!-- /.row -->
+						
 						<!-- AQUI NASCE A INCLUSÃO DA TABELA DE BALANCO -->
 						<div class="row">
-							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								<?php 
-									// include "balanco.php" 
-								?>
-						<?php 
-						$mostrar = new MOVS;
-						$dados = $mostrar->bal_pormes($contapd,$mes_hoje, $ano_hoje);
-						
-						foreach($dados as $linha){
-						$saldo_aa = $linha['saldo_ano_ant'];
-						$saldo_ant = $linha['saldo_anterior_mes'];
-						$entradas_m = $linha['credito_mes'];
-						$saidas_m = $linha['debito_mes'];
-						$resultado_mes = $linha['saldo_atual_mes'];
-						$ent_acab = $linha['credito_acum_ano'];
-						$sai_acab = $linha['debito_acum_ano'];
-						$bal = $linha['bal_mes'];
-						$bal_bal = $linha['bal_acum'];
-						$saldo_acab = $linha['saldo_acum_ano'];
-						//$saldo_acab = $saldo_aa + $ent_acab - $sai_acab;
-						} ?>
-						<div class="col-lg-12 col-md-12 col-sm-12 col-xd-12">	
-							<div class="panel panel-primary" >
-								<!--  CABEÇALHO DOS BALANCOS -->
-								<div class="panel-heading"  >
-									<div class="row">
-										<div class="col-lg-6 col-md-6 col-sm-6 col-xd-6" style="text-align: left;">
-											<strong> BALANCOS DE MOVIMENTO - LIVRO Nº <?php echo $livro ?></strong>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-6 col-xd-6" style="text-align: right;">
-											<strong> DEMOSTRATIVO MENSAL </strong>
-										</div>
-									</div>	
-								</div>
-								<!--  INICIO DO CORPO DO BALANCO -->
-								<div class="panel-body" >
-									<div class="row">
-										<!--  BALANÇO MENSAL -->
-										<div class="col-sm-6" style=" border-top: 1px dashed #f00; border-bottom: 1px dashed #f00;">
-											<!--  SALDO ANTERIOR  BALANÇO MENSAL -->
-											<div class="row" >
-												<div class="col-sm-12" style="text-align: left; border-bottom: 1px dashed #f00; background: #DCDCDC;" >
-													<strong><span style="font-size:14px; color:<?php echo "#006400" ?>">BALANCO MENSAL </span></strong>
-												</div>
+							
+							<?php 
+							$mostrar = new MOVS;
+							$dados = $mostrar->bal_pormes($contapd,$mes_hoje, $ano_hoje);
+							
+							foreach($dados as $linha){
+							$saldo_aa = $linha['saldo_ano_ant'];
+							$saldo_ant = $linha['saldo_anterior_mes'];
+							$entradas_m = $linha['credito_mes'];
+							$saidas_m = $linha['debito_mes'];
+							$resultado_mes = $linha['saldo_atual_mes'];
+							$ent_acab = $linha['credito_acum_ano'];
+							$sai_acab = $linha['debito_acum_ano'];
+							$bal = $linha['bal_mes'];
+							$bal_bal = $linha['bal_acum'];
+							$saldo_acab = $linha['saldo_acum_ano'];
+							//$saldo_acab = $saldo_aa + $ent_acab - $sai_acab;
+							} ?>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xd-12">	
+								<div class="panel panel-primary" >
+									<!--  CABEÇALHO DOS BALANCOS -->
+									<div class="panel-heading"  >
+										<div class="row">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xd-6" style="text-align: left;">
+												<strong> BALANCOS DE MOVIMENTO - LIVRO Nº <?php echo $livro ?></strong>
 											</div>
-											<div class="row" >
-												<div class="col-sm-6" style="text-align: left; border-bottom: 1px dashed #f00; background: #DCDCDC;" >
-													<strong><span style="font-size:14px; color:<?php echo "#006400" ?>">Saldo Anterior:</span></strong>
-												</div>
-												<div class="col-sm-6" style=" text-align: right; border-bottom: 1px dashed #f00; background: #DCDCDC;">
-													<strong><span style="font-size:14px; color:<?php echo "#006400" ?>"><?php print formata_dinheiro($saldo_ant) ?></span></strong>
-												</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xd-6" style="text-align: right;">
+												<strong> DEMOSTRATIVO MENSAL </strong>
 											</div>
-											<!--  ENTRADAS BALANÇO MENSAL -->
-											<div class="row">
-												<div class="col-sm-6" style="text-align: left; border-bottom: 1px dashed #f00; background: #DCDCDC;">
-													<strong><span style="font-size:14px; color:<?php echo "#0000FF" ?>">Entradas:</span></strong>
-												</div>
-												<div class="col-sm-6" style=" text-align: right; border-bottom: 1px dashed #f00; background: #DCDCDC;">
-													<strong><span style="font-size:14px; color:<?php echo "#0000FF" ?>"><?php print formata_dinheiro($entradas_m) ?></span></strong>
-												</div>
-											</div>
-											<!--  SAIDAS BALANÇO MENSAL -->
-											<div class="row">
-												<div class="col-sm-6" style=" text-align: left; border-bottom: 1px dashed #f00; background: #DCDCDC;">
-													<strong><span style="font-size:14px; color:<?php echo "#C00" ?>">Saidas:</span></strong>
-												</div>
-												<div class="col-sm-6" style=" text-align: right; border-bottom: 1px dashed #f00; background: #DCDCDC;">
-													<strong><span style="font-size:14px; color:<?php echo "#C00" ?>"><?php print formata_dinheiro($saidas_m) ?></span></strong>
-												</div>
-											</div>
-											<!--  SALDO ATUAL BALANÇO MENSAL  -->
-											<!--  BALANÇO BALANÇO MENSAL -->
-											<div class="row">
-												<div class="col-sm-6" style=" text-align: left; border-bottom: 1px dashed #f00; background: #DCDCDC;">
-													<strong><span style="font-size:14px; color:<?php if($bal > 0) { echo "#0000FF"; }else{ echo "#C00";} ?>">Balanco Mensal:</span></strong>
-												</div>
-												<div class="col-sm-6" style=" text-align: right; border-bottom: 1px dashed #f00; background: #DCDCDC;">
-													<strong>
-														<span style="font-size:14px; color:<?php if($bal > 0) { echo "#0000FF"; }else{ echo "#C00";} ?>">
-															<?php echo formata_dinheiro($bal) ?>
-														</span>
-													</strong>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-sm-6" style=" text-align: left; border-bottom: 0px dashed #f00; background: #DCDCDC;">
-													<strong><span style="font-size:14px; color:<?php echo "#006400" ?>">Saldo Atual:</span></strong>
-												</div>
-												<div class="col-sm-6" style=" text-align: right; border-bottom: 0px dashed #f00; background: #DCDCDC;">
-													<strong><span style="font-size:14px; color:<?php echo "#006400" ?>"><?php print formata_dinheiro($resultado_mes) ?></span></strong>
-												</div>
-											</div>		
-										</div>
-										<!--  FIM DO BALANCO MENSAL -->
-										<!-- INICIO DO BALANÇO ANUAL  -->	
-										<div class="col-sm-6" style=" border-top: 1px dashed #f00; border-bottom: 1px dashed #f00;">
-											
-											<div class="row" >
-												<div class="col-sm-12" style="text-align: left; border-bottom: 1px dashed #f00; background: #DCDCDC;" >
-													<strong><span style="font-size:14px; color:<?php echo "#006400" ?>">BALANCO ANUAL</span></strong>
-												</div>
-											</div>
-											<!--  SALDO ANTERIOR  BALANÇO ANUAL -->
-											<div class="row">
-												<div class="col-sm-6" style=" text-align: left; border-bottom: 1px dashed #f00; background: #DCDCDC;">
-													<strong><span style="font-size:14px; color:<?php echo "#006400" ?>">Saldo Anterior:</span></strong>
-												</div>
-												<div class="col-sm-6" style=" text-align: right; border-bottom: 1px dashed #f00; background: #DCDCDC;">
-													<strong><span style="font-size:14px; color:<?php echo "#006400" ?>"><?php print formata_dinheiro($saldo_aa) ?></span></strong>
-												</div>
-											</div>
-											<!--  ENTRADAS  BALANÇO ANUAL -->
-											<div class="row">
-												<div class="col-sm-6" style=" text-align: left; border-bottom: 1px dashed #f00; background: #DCDCDC;">
-													<strong><span style="font-size:14px; color:<?php echo "#0000FF" ?>">Entradas:</span></strong>
-												</div>
-												<div class="col-sm-6" style=" text-align: right; border-bottom: 1px dashed #f00; background: #DCDCDC;">
-													<strong><span style="font-size:14px; color:<?php echo "#0000FF" ?>"><?php print formata_dinheiro($ent_acab) ?></span></strong>
-												</div>
-											</div>
-											<!--  SAIDAS BALANÇO ANUAL -->
-											<div class="row">
-												<div class="col-sm-6" style=" text-align: left; border-bottom: 1px dashed #f00; background: #DCDCDC;">
-													<strong><span style="font-size:14px; color:<?php echo "#C00" ?>">Saidas:</span></strong>
-												</div>
-												<div class="col-sm-6" style=" text-align: right; border-bottom: 1px dashed #f00; background: #DCDCDC;">
-													<strong><span style="font-size:14px; color:<?php echo "#C00" ?>"><?php print formata_dinheiro($sai_acab) ?></span></strong>	
-												</div>
-											</div>
-											<!--  BALANÇO BALANÇO MENSAL -->
-											<div class="row">
-												<div class="col-sm-6" style=" text-align: left; border-bottom: 1px dashed #f00; background: #DCDCDC;">
-													<strong><span style="font-size:14px; color:<?php if($bal > 0) { echo "#0000FF"; }else{ echo "#C00";} ?>">Balanco Anual:</span></strong>
-												</div>
-												<div class="col-sm-6" style=" text-align: right; border-bottom: 1px dashed #f00; background: #DCDCDC;">
-													<strong>
-														<span style="font-size:14px; color:<?php if($bal_bal > 0) { echo "#0000FF"; }else{ echo "#C00";} ?>">
-															<?php echo formata_dinheiro($bal_bal) ?>
-														</span>
-													</strong>
-												</div>
-											</div>
-											<!--  SALDO ATUAL BALANÇO ANUAL -->
-											<div class="row">
-												<div class="col-sm-6" style=" text-align: left; border-bottom: 0px dashed #f00; background: #DCDCDC;">
-													<strong><span style="font-size:14px; color:<?php echo "#006400" ?>">Saldo Atual:</span></strong>
-												</div>
-												<div class="col-sm-6" style=" text-align: right; border-bottom: 0px dashed #f00; background: #DCDCDC;">
-													<strong><span style="font-size:14px; color:<?php echo "#006400" ?>"><?php print formata_dinheiro($saldo_acab) ?></span></strong>
-												</div>
-											</div>
-										</div>
-										<!--  FIM DO BALANCO ANUAL -->
+										</div>	
 									</div>
-								
-									<div class="row" >
-										<div class="wrapper" style=" background: #DCDCDC; ">
-											<form class="form-inline" style="text-align: center;">
-												<label for="ano">
-												Ano:
-												</label>
-												<select class="form-control" id="sel1" onchange="location.replace('?mes=<?php echo $mes_hoje?>&ano='+this.value)">
-													<?php
-														for ($i=2004;$i<=2050;$i++){
+									<!--  INICIO DO CORPO DO BALANCO -->
+									<div class="panel-body" >
+										<div class="row">
+											<!--  BALANÇO MENSAL -->
+											<div class="col-sm-6" style=" border-top: 1px dashed #f00; border-bottom: 1px dashed #f00;">
+												<!--  SALDO ANTERIOR  BALANÇO MENSAL -->
+												<div class="row" >
+													<div class="col-sm-12" style="text-align: left; border-bottom: 1px dashed #f00; background: #DCDCDC;" >
+														<strong><span style="font-size:14px; color:<?php echo "#006400" ?>">BALANCO MENSAL </span></strong>
+													</div>
+												</div>
+												<div class="row" >
+													<div class="col-sm-6" style="text-align: left; border-bottom: 1px dashed #f00; background: #DCDCDC;" >
+														<strong><span style="font-size:14px; color:<?php echo "#006400" ?>">Saldo Anterior:</span></strong>
+													</div>
+													<div class="col-sm-6" style=" text-align: right; border-bottom: 1px dashed #f00; background: #DCDCDC;">
+														<strong><span style="font-size:14px; color:<?php echo "#006400" ?>"><?php print formata_dinheiro($saldo_ant) ?></span></strong>
+													</div>
+												</div>
+												<!--  ENTRADAS BALANÇO MENSAL -->
+												<div class="row">
+													<div class="col-sm-6" style="text-align: left; border-bottom: 1px dashed #f00; background: #DCDCDC;">
+														<strong><span style="font-size:14px; color:<?php echo "#0000FF" ?>">Entradas:</span></strong>
+													</div>
+													<div class="col-sm-6" style=" text-align: right; border-bottom: 1px dashed #f00; background: #DCDCDC;">
+														<strong><span style="font-size:14px; color:<?php echo "#0000FF" ?>"><?php print formata_dinheiro($entradas_m) ?></span></strong>
+													</div>
+												</div>
+												<!--  SAIDAS BALANÇO MENSAL -->
+												<div class="row">
+													<div class="col-sm-6" style=" text-align: left; border-bottom: 1px dashed #f00; background: #DCDCDC;">
+														<strong><span style="font-size:14px; color:<?php echo "#C00" ?>">Saidas:</span></strong>
+													</div>
+													<div class="col-sm-6" style=" text-align: right; border-bottom: 1px dashed #f00; background: #DCDCDC;">
+														<strong><span style="font-size:14px; color:<?php echo "#C00" ?>"><?php print formata_dinheiro($saidas_m) ?></span></strong>
+													</div>
+												</div>
+												<!--  SALDO ATUAL BALANÇO MENSAL  -->
+												<!--  BALANÇO BALANÇO MENSAL -->
+												<div class="row">
+													<div class="col-sm-6" style=" text-align: left; border-bottom: 1px dashed #f00; background: #DCDCDC;">
+														<strong><span style="font-size:14px; color:<?php if($bal > 0) { echo "#0000FF"; }else{ echo "#C00";} ?>">Balanco Mensal:</span></strong>
+													</div>
+													<div class="col-sm-6" style=" text-align: right; border-bottom: 1px dashed #f00; background: #DCDCDC;">
+														<strong>
+															<span style="font-size:14px; color:<?php if($bal > 0) { echo "#0000FF"; }else{ echo "#C00";} ?>">
+																<?php echo formata_dinheiro($bal) ?>
+															</span>
+														</strong>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-sm-6" style=" text-align: left; border-bottom: 0px dashed #f00; background: #DCDCDC;">
+														<strong><span style="font-size:14px; color:<?php echo "#006400" ?>">Saldo Atual:</span></strong>
+													</div>
+													<div class="col-sm-6" style=" text-align: right; border-bottom: 0px dashed #f00; background: #DCDCDC;">
+														<strong><span style="font-size:14px; color:<?php echo "#006400" ?>"><?php print formata_dinheiro($resultado_mes) ?></span></strong>
+													</div>
+												</div>		
+											</div>
+											<!--  FIM DO BALANCO MENSAL -->
+											<!-- INICIO DO BALANÇO ANUAL  -->	
+											<div class="col-sm-6" style=" border-top: 1px dashed #f00; border-bottom: 1px dashed #f00;">
+												
+												<div class="row" >
+													<div class="col-sm-12" style="text-align: left; border-bottom: 1px dashed #f00; background: #DCDCDC;" >
+														<strong><span style="font-size:14px; color:<?php echo "#006400" ?>">BALANCO ANUAL</span></strong>
+													</div>
+												</div>
+												<!--  SALDO ANTERIOR  BALANÇO ANUAL -->
+												<div class="row">
+													<div class="col-sm-6" style=" text-align: left; border-bottom: 1px dashed #f00; background: #DCDCDC;">
+														<strong><span style="font-size:14px; color:<?php echo "#006400" ?>">Saldo Anterior:</span></strong>
+													</div>
+													<div class="col-sm-6" style=" text-align: right; border-bottom: 1px dashed #f00; background: #DCDCDC;">
+														<strong><span style="font-size:14px; color:<?php echo "#006400" ?>"><?php print formata_dinheiro($saldo_aa) ?></span></strong>
+													</div>
+												</div>
+												<!--  ENTRADAS  BALANÇO ANUAL -->
+												<div class="row">
+													<div class="col-sm-6" style=" text-align: left; border-bottom: 1px dashed #f00; background: #DCDCDC;">
+														<strong><span style="font-size:14px; color:<?php echo "#0000FF" ?>">Entradas:</span></strong>
+													</div>
+													<div class="col-sm-6" style=" text-align: right; border-bottom: 1px dashed #f00; background: #DCDCDC;">
+														<strong><span style="font-size:14px; color:<?php echo "#0000FF" ?>"><?php print formata_dinheiro($ent_acab) ?></span></strong>
+													</div>
+												</div>
+												<!--  SAIDAS BALANÇO ANUAL -->
+												<div class="row">
+													<div class="col-sm-6" style=" text-align: left; border-bottom: 1px dashed #f00; background: #DCDCDC;">
+														<strong><span style="font-size:14px; color:<?php echo "#C00" ?>">Saidas:</span></strong>
+													</div>
+													<div class="col-sm-6" style=" text-align: right; border-bottom: 1px dashed #f00; background: #DCDCDC;">
+														<strong><span style="font-size:14px; color:<?php echo "#C00" ?>"><?php print formata_dinheiro($sai_acab) ?></span></strong>	
+													</div>
+												</div>
+												<!--  BALANÇO BALANÇO MENSAL -->
+												<div class="row">
+													<div class="col-sm-6" style=" text-align: left; border-bottom: 1px dashed #f00; background: #DCDCDC;">
+														<strong><span style="font-size:14px; color:<?php if($bal > 0) { echo "#0000FF"; }else{ echo "#C00";} ?>">Balanco Anual:</span></strong>
+													</div>
+													<div class="col-sm-6" style=" text-align: right; border-bottom: 1px dashed #f00; background: #DCDCDC;">
+														<strong>
+															<span style="font-size:14px; color:<?php if($bal_bal > 0) { echo "#0000FF"; }else{ echo "#C00";} ?>">
+																<?php echo formata_dinheiro($bal_bal) ?>
+															</span>
+														</strong>
+													</div>
+												</div>
+												<!--  SALDO ATUAL BALANÇO ANUAL -->
+												<div class="row">
+													<div class="col-sm-6" style=" text-align: left; border-bottom: 0px dashed #f00; background: #DCDCDC;">
+														<strong><span style="font-size:14px; color:<?php echo "#006400" ?>">Saldo Atual:</span></strong>
+													</div>
+													<div class="col-sm-6" style=" text-align: right; border-bottom: 0px dashed #f00; background: #DCDCDC;">
+														<strong><span style="font-size:14px; color:<?php echo "#006400" ?>"><?php print formata_dinheiro($saldo_acab) ?></span></strong>
+													</div>
+												</div>
+											</div>
+											<!--  FIM DO BALANCO ANUAL -->
+										</div>
+									
+										<div class="row" >
+											<div class="wrapper" style=" background: #DCDCDC; ">
+												<form class="form-inline" style="text-align: center;">
+													<label for="ano">
+													Ano:
+													</label>
+													<select class="form-control" id="sel1" onchange="location.replace('?mes=<?php echo $mes_hoje?>&ano='+this.value)">
+														<?php
+															for ($i=2004;$i<=2050;$i++){
+															?>
+															<option value="<?php echo $i?>" <?php if ($i==$ano_hoje) echo "selected=selected"?> ><?php echo $i?></option>
+														<?php }?>
+													</select>
+													<label for="mes">
+													Mes:
+													</label>
+													<div class="btn-group">
+														<?php
+															for ($i=1;$i<=12;$i++){
 														?>
-														<option value="<?php echo $i?>" <?php if ($i==$ano_hoje) echo "selected=selected"?> ><?php echo $i?></option>
-													<?php }?>
-												</select>
-												<label for="mes">
-												Mes:
-												</label>
-												<div class="btn-group">
-													<?php
-														for ($i=1;$i<=12;$i++){
-													?>
-													<?php if($mes_hoje==$i){?>
-													<!-- MES SELECIONADO -->
-													<a href="?mes=<?php echo $i?>&ano=<?php echo $ano_hoje?>" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-calendar"></span>
-													<?php }else{?>
-													<!-- OUTROS MESES -->
-													<a href="?mes=<?php echo $i?>&ano=<?php echo $ano_hoje?>" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-calendar"></span>
-													<?php } ?>	
-													<?php echo mostraMes($i);?>
+														<?php if($mes_hoje==$i){?>
+														<!-- MES SELECIONADO -->
+														<a href="?mes=<?php echo $i?>&ano=<?php echo $ano_hoje?>" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-calendar"></span>
+														<?php }else{?>
+														<!-- OUTROS MESES -->
+														<a href="?mes=<?php echo $i?>&ano=<?php echo $ano_hoje?>" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-calendar"></span>
+														<?php } ?>	
+														<?php echo mostraMes($i);?>
+														</a>
+														<?php } ?>
+													</div>	
+													<a href="#modal_pdf" class="btn btn-sm btn-success " name="add_mov" data-toggle="modal">
+														<i class="glyphicon glyphicon-plus"></i> pdf
 													</a>
-													<?php } ?>
-												</div>	
-												<a href="#modal_pdf" class="btn btn-sm btn-success " name="add_mov" data-toggle="modal">
-													<i class="glyphicon glyphicon-plus"></i> pdf
-												</a>
-												<a href="#addmov" class="btn btn-sm btn-success " name="add_mov" data-toggle="modal" style="border: solid 1px; border-radius: 1px; box-shadow: 1px 1px 1px 1px black; border-radius:3px 3px 3px 3px;">
-													<i class="glyphicon glyphicon-plus"></i> Novo
-												</a>
-												<a href="list_cat.php" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span>Categorias</a>
-											</form>	
+													<a href="#addmov" class="btn btn-sm btn-success " name="add_mov" data-toggle="modal" style="border: solid 1px; border-radius: 1px; box-shadow: 1px 1px 1px 1px black; border-radius:3px 3px 3px 3px;">
+														<i class="glyphicon glyphicon-plus"></i> Novo
+													</a>
+													<a href="list_cat.php" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span>Categorias</a>
+												</form>	
+											</div>
 										</div>
 									</div>
-								</div>
-								
-							</div>	
-						</div>
-		
-	
-			<!-- FIM DO BALANCO DE MOVIMENTOS -->
-								<!-- PAGE CONTENT ENDS -->
-							</div><!-- /.col -->
-						</div>
+									
+								</div>	
+							</div>
+						</div><!-- /.col -->
 						<div class="row">
 							<div class="col-xs-12" >
+								<div class="panel panel-primary" >
+								<!--  CABEÇALHO DA TABELA DE DADOS -->
+									<div class="panel-heading"  >
+										<div class="row">
+											<div class="col-sm-6" >
+												<strong>RELATORIO DE CAIXA <?php echo $mes_hoje ?>/<?php echo $ano_hoje ?></strong>
+											</div>
+											<div class="col-sm-6" style="text-align: right;">
+												<strong>
+														SALDO ANTERIOR:  <?php echo formata_dinheiro($saldo_ant) ?>
+												</strong>
+											</div>
+										</div>
+									</div>
+								<!--  CORPO DA TABELA DE DADOS -->
+								<div class="panel-body" >
+									<?php 
+										$mostrar = new MOVS;
+										$dados = $mostrar->dados_pormes($contapd,$mes_hoje, $ano_hoje);	
+									?>
+									<table id="tb_home_f" class="table table-responsive table-bordered table-striped table-condensed table-hover" style="">
+										<thead>
+											<tr >
+												<th >Seq.</th>
+												<th >Id.</th>
+												<th >Data</th>
+												<th >Descricao</th>
+												<th >Categoria</th>
+												<th >Livro/Folha</th>
+												<th >Entradas</th>
+												<th >Saidas</th>
+												<th >Saldo</th>
+											</tr>
+										</thead>					
+										<tbody>
+										<?php
+											foreach ($dados as $row) {	
+											$cont++;
+											$seq++;
+											
+											$cat = $row['cat'];
+											$stmt = $db->prepare("SELECT * FROM lc_cat WHERE id='$cat'");
+											$stmt->execute();
+											$qr2=$stmt->fetch(PDO::FETCH_ASSOC);
+											$categoria = $qr2['nome'];	
+												
+										?>
+										<tr >	
+											<td style="text-align: center; color:<?php if ($row['tipo']==0) echo "#C00"; else echo "#0000FF"?>"><strong style="font-size:12px;"><?php echo $seq; ?></strong></td>
+											<td style="text-align: center; color:<?php if ($row['tipo']==0) echo "#C00"; else echo "#0000FF"?>">
+												<a style="color:<?php if ($row['tipo']==0) echo "#C00"; else echo "#0000FF"?>;" href="#edit<?php echo $row['id']; ?>" data-toggle="modal" name="btn_edit_mov" ><strong style="font-size:12px;"><b><i><u><?php echo $row['id']; ?></u></i></b></a>									
+											<?php include('operations/edit_mov.php'); ?>
+											</td>
+											<td style="text-align: center; color:<?php if ($row['tipo']==0) echo "#C00"; else echo "#0000FF"?>"><strong style="font-size:12px;"><?php echo InvertData($row['datamov']); ?></strong></td>
+											<td style="text-align: left; color:<?php if ($row['tipo']==0) echo "#C00"; else echo "#0000FF"?>"><strong style="font-size:12px;"><?php echo $row['descricao']; ?></strong></td>
+											<td style="text-align: left; color:<?php if ($row['tipo']==0) echo "#C00"; else echo "#0000FF"?>"><strong style="font-size:12px;"><a style="color:<?php if ($row['tipo']==0) echo "#C00"; else echo "#0000FF"?>;" href="?mes=<?php echo $mes_hoje?>&ano=<?php echo $ano_hoje?>&filtro_cat=<?php echo $categoria?>"><?php echo $categoria?></strong></a></td>
+											<td style="text-align: center; color:<?php if ($row['tipo']==0) echo "#C00"; else echo "#0000FF"?>"><strong style="font-size:12px;"><?php echo $row['idlivro']; ?>-<?php echo $row['folha']; ?></strong></td>
+											<td style="text-align: center;">
+												<p style="color:<?php if ($row['tipo']==0) echo "#C00"; else echo "#0000FF"?>"><?php if ($row['tipo']==1) echo "+"; else echo ""?><strong style="font-size:12px;"><?php if ($row['tipo']==1) echo formata_dinheiro($row['credito']); else echo ""?></strong></p>
+											</td>
+											<td style="text-align: center;">
+												<p style="color:<?php if ($row['tipo']==0) echo "#C00"; else echo "#030"?>"><?php if ($row['tipo']==0) echo "-"; else echo ""?><strong style="font-size:12px;"><?php if ($row['tipo']==0) echo formata_dinheiro($row['debito']); else echo ""?></strong></p>
+											</td>
+											<?php //if ($row['tipo']==1) formata_dinheiro($saldo=$saldo+$row['valor']); else formata_dinheiro($saldo=$saldo-$row['valor']); ?>
+											<?php //$acumulado = $saldo_ant+$saldo;?>
+											<td style="text-align: center;">
+												<p style="color:<?php if ($row['saldo_atual']>0) echo "#00f"; else echo"#C00" ?>"><strong style="font-size:12px;"><?php echo formata_dinheiro($row['saldo_atual']);?></strong></p>
+											</td>							
+										</tr>					
+										<?php  } ?>						
+										</tbody>
+										<tfoot>
+											<tr>
+												<th >Seq.</th>
+												<th >Id.</th>
+												<th >Data</th>
+												<th >Descricao</th>
+												<th >Categoria</th>
+												<th >Folha</th>
+												<th >Entradas</th>
+												<th >Saidas</th>
+												<th >Saldo</th>
+											</tr>
+										</tfoot>
+									</table>
+								</div>
+								<div class="panel-footer" >
+									<table id="tb_home" class="table table-responsive table-bordered table-striped table-condensed table-hover" >
+										<tr>
+											<td style="width:220px; text-align: right; " COLSPAN="4"><strong> A TRANSPORTAR TOTAIS DO DIA </strong></td>
+											<td style="width:100px; text-align: center; ">
+												<strong>
+													<span style="font-size:12px; color:<?php echo "#0000FF" ?>">
+														<?php echo formata_dinheiro($entradas_m) ?>
+													</span>
+												</strong>
+											</td>
+											<td style="width:100px; text-align: center; ">
+												<strong>
+													<span style="font-size:12px; color:<?php echo "#C00" ?>">
+														<?php echo formata_dinheiro($saidas_m) ?>
+													</span>
+												</strong>
+											</td>
+											<td style="width:100px; text-align: center; "><?php echo "" ?></td>
+										</tr>
+										<tr>
+											<td style="width:180px; text-align: right; " COLSPAN="4"><strong> SALDO ANTERIOR </strong></td>
+											<td style="width:100px; text-align: center; ">
+												<strong>
+													<span style="font-size:12px; color:<?php echo "#006400" ?>">
+														<?php echo formata_dinheiro($saldo_ant) ?>
+													</span>
+												</strong>
+											</td>
+											<td style="width:100px; text-align: center; "></td>
+											<td style="width:100px; text-align: center; "></td>
+										</tr>
+										<tr>
+											<td style="width:180px; text-align: right; " COLSPAN="4"><strong> SALDO ATUAL </strong></td>
+											<td style="width:100px; text-align: center; "></td>
+											<td style="width:100px; text-align: center; "></td>
+											<td style="width:100px; text-align: center; ">
+												<strong>
+													<span style="font-size:14px; color:<?php echo "#006400" ?>">
+														<?php echo formata_dinheiro($resultado_mes) ?>
+													</span>
+												</strong>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
 							  <?php //<!-- COMANDO PHP PARA MOSTRAR A TABELA DE DADOS  -->
-								  include "table_home.php";  
+								  //include "table_home.php";  
 							  ?>
-								
-									<table class="table table-responsive table-bordered table-striped table-condensed table-hover" >
-										<tr>
-											<td style="width:380px;  text-align: right; " COLSPAN="4"><strong> A TRANSPORTAR TOTAIS DO DIA </strong></td>
-											<td style=" width:80px; text-align: center; "><?php echo formata_dinheiro($entradas_m); ?></td>
-											<td style=" width:80px; text-align: center; "><?php echo formata_dinheiro($saidas_m) ?></td>
-											<td style=" width:80px; text-align: center; "><?php echo formata_dinheiro($saldo_m) ?></td>
-										</tr>
-										<tr>
-											<td style="width:380px; text-align: right; " COLSPAN="4"><strong> SALDO ANTERIOR </strong></td>
-											<td style=" width:80px; text-align: center; "></td>
-											<td style=" width:80px; text-align: center; "></td>
-											<td style=" width:80px; text-align: center; "><?php echo formata_dinheiro($saldoanterior) ?></td>
-										</tr>
-										<tr>
-											<td style="width:380px; text-align: right; " COLSPAN="4"><strong> SALDO ATUAL </strong></td>
-											<td style="width:80px; text-align: center; "><?php echo formata_dinheiro($resultado_mes) ?></td>
-											<td style="width:80px; text-align: center; "></td>
-											<td style="width:80px; text-align: center; "></td>
-										</tr>
-									</table>	
-								</footer>
+
 							</div>
 						</div><!-- /.row -->
 						<!-- 	AQUI FOI INSERIDO A TABELA DO TABLES.HTML PARA INPLANTAÇÃO DOS DADOS DO BANCO -->
-						<div class="row">
-									<div class="col-xs-12">
+						
+
+					</div>
+			<!-- FIM DO BALANCO DE MOVIMENTOS -->
+								<!-- PAGE CONTENT ENDS -->
+							
+						
+						
+					<div class="col-xs-12">
 										<h3 class="header smaller lighter blue">jQuery dataTables</h3>
 
 										<div class="clearfix">
